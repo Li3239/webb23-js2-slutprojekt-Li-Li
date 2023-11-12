@@ -69,7 +69,8 @@ function Button({currentProduct, cartData, cartIsChanged, setCartIsChanged}) {
     return(
         <>
             {/* call handleClick only when button is clicked */}
-            <button disabled={ parseInt(currentProduct.inventory) == 0} 
+            <button disabled={ parseInt(currentProduct.inventory) == 0 ||
+                               cartData.find((item) => item.id === currentProduct.id && item.amount >= currentProduct.inventory)} 
                     onClick={() => handleClick(currentProduct)}>Köp</button>
         </>
     )
